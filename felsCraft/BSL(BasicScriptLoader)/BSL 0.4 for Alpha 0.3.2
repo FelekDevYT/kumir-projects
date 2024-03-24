@@ -1,0 +1,42 @@
+
+||BasicScriptLoader
+
+алг BSL_REGISTER_BLOCK(цел ID,лит ITEM_NAME,лит color)
+нач
+имя_блоков[ID] := ITEM_NAME
+блоки[ID] := ID
+цвета_блоков[ID] := color
+Colorer(color)
+кон
+
+алг BSL_GENERATION_BLOCK(цел ID,цел MAX_Y,цел рандом1,рандом2)
+нач
+цел random,x,y
+x:=1
+y:=300
+нц MAX_Y раз
+нц 32 раза
+random := irand(рандом1,рандом2)
+если random = irand(рандом1,рандом2)
+то
+Colorer(цвета_блоков[ID])
+Cube(x,y,color_Of_Block)
+иначе
+Cube(x,y,прозрачный)
+все
+x:=x+20
+кц
+x:=1
+y:=y-20
+кц
+кон
+
+||YOU MOD IN BSL(Please add this func in Starter!)
+
+алг MODIFICATION
+нач
+BSL_REGISTER_BLOCK(8,"butter","red")
+BSL_REGISTER_BLOCK(9,"tea","blue")
+BSL_GENERATION_BLOCK(8,4,1,9)
+BSL_GENERATION_BLOCK(9,3,1,15)
+кон 
