@@ -1,0 +1,15 @@
+||BasicScriptLoader
+
+алг BSL_REGISTER_ITEM(цел ID,лит ITEM_NAME,лит color)
+нач
+имя_блоков[ID] := ITEM_NAME
+блоки[ID] := ID
+Colorer(color)
+кон
+
+||YOU MOD IN BSL(Please add this func in Starter!)
+
+алг MODIFICATION
+нач
+BSL_REGISTER_ITEM(8,"butter","yellow")
+кон
