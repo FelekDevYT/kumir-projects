@@ -1,0 +1,14 @@
+||BasicScriptLoader
+
+алг BSL_REGISTER_ITEM(цел ID,лит ITEM_NAME)
+нач
+имя_блоков[ID] := ITEM_NAME
+блоки[ID] := ID
+кон
+
+||YOU MOD IN BSL(Please add this func in Starter!)
+
+алг MODIFICATION
+нач
+BSL_REGISTER_ITEM(8,"butter")
+кон
