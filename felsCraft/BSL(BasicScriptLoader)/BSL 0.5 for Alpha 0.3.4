@@ -1,0 +1,94 @@
+||BasicScriptLoader
+
+алг BSL_REGISTER_BLOCK(цел ID,лит ITEM_NAME,лит color)
+нач
+имя_блоков[ID] := ITEM_NAME
+блоки[ID] := ID
+цвета_блоков[ID] := color
+Colorer(color)
+кон
+
+алг BSL_GENERATION_BLOCK(цел ID,цел MAX_Y,цел рандом1,рандом2)
+нач
+цел random,x,y
+x:=1
+y:=300
+нц MAX_Y раз
+нц 32 раза
+random := irand(irand(рандом1,20),рандом2)
+если random = irand(рандом1,рандом2)
+то
+Colorer(цвета_блоков[ID])
+Cube(x,y,color_Of_Block)
+иначе
+Cube(x,y,прозрачный)
+все
+x:=x+20
+кц
+x:=1
+y:=y-20
+кц
+кон
+
+алг BSL_GENERATION_BIOME(цел ID,цел ID2,цел BiomeType)
+нач
+цел x,y,корд
+корд:=irand(1,640)
+нц
+если mod(корд,20) = 0
+то
+выход
+все
+корд:=корд+1
+кц
+вывод корд,нс
+x:=корд+1
+y:=300
+нц 6 раз
+нц 20 раз
+Cube(x,y,RGB(124, 207, 243))
+y:=y-20
+кц
+y:=300
+x:=x+20
+кц
+||||||||||
+цел тв
+цвет colorOfBlock
+x:=корд+1
+y:=300
+тв:=1
+нц 6 раз 
+нц irand(6,7) раз
+если тв >= 1
+то
+Colorer(цвета_блоков[ID])
+colorOfBlock := color_Of_Block
+все
+если тв >= irand(4,7)
+то
+Colorer(цвета_блоков[ID2])
+colorOfBlock := color_Of_Block
+все
+выбор
+при тв <=5 и irand(1,5) = irand(1,3) и irand(1,2) = irand(1,2):colorOfBlock:=RGB(132, 141, 148)
+при тв <=3 и irand(1,7) = irand(1,5) и irand(1,2) = irand(1,3):colorOfBlock:=желтый
+при тв <=1 и irand(1,12) = irand(1,2) и irand(1,3) = irand(1,5):colorOfBlock:=RGB(54, 171, 186)
+все
+Cube(x,y,colorOfBlock)
+y:=y-20
+тв:=тв+1
+кц
+тв:=1
+y:=300
+x:=x+20
+кц
+кон
+
+||YOU MOD IN BSL(Please add this func in Starter!)
+
+алг MODIFICATION
+нач
+BSL_REGISTER_BLOCK(8,"tea","blue")
+BSL_GENERATION_BIOME(4,8,1)
+кон 
